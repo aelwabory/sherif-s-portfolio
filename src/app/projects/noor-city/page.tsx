@@ -146,20 +146,25 @@ export default function NoorCityPage() {
         </div>
         <div className="space-y-0">
           {zones.map((zone, index) => (
-            <div key={index}>
-              <ZoneSection
-                zoneIndex={index}
-                zoneNumber={String(index + 1).padStart(2, "0")}
-                title={zone.title}
-                description={zone.description}
-                mainImage={zone.mainImage}
-                images={zone.images}
-                features={zone.features}
-                projectDetails={zone.projectDetails}
-              />
-              <PresentationShowcase images={zone.images} features={zone.features} title={zone.title} />
-            </div>
-          ))}
+  <div key={index}>
+    <ZoneSection
+      zoneIndex={index}
+      zoneNumber={String(index + 1).padStart(2, "0")}
+      title={zone.title}
+      description={zone.description}
+      mainImage={zone.mainImage}
+      images={zone.images}
+      projectDetails={zone.projectDetails}
+      features={zone.features} // ✅ already here
+    />
+    <PresentationShowcase
+      images={zone.images}
+      features={zone.features}
+      title={zone.title}
+      layoutVariant={index % 2} // ✅ added for alternating layout
+    />
+  </div>
+))}
         </div>
       </section>
 

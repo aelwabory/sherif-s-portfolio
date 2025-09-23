@@ -173,7 +173,6 @@ export default function BenanPage() {
     />
   </div>
 ))}
-
         </div>
       </section>
 
