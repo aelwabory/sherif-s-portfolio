@@ -179,33 +179,35 @@ export default function HydeParkPage() {
         </div>
         <div className="space-y-0">
           {zones.map((zone, index) => (
-            <div key={index}>
-              <ZoneSection
-                zoneIndex={index}
-                zoneNumber={String(index + 1).padStart(2, "0")}
-                title={zone.title}
-                description={zone.description}
-                mainImage={zone.mainImage}
-                images={zone.images}
-                projectDetails={zone.projectDetails}
-              />
-              {/* For zone 0 (overview), just show its 2 images, no features */}
-              {index === 0 ? (
-                <PresentationShowcase
-                  images={zone.images.filter(img => img !== zone.mainImage)}
-                  features={[]}
-                  title={zone.title}
-                />
-              ) : (
-                <PresentationShowcase
-                  images={zone.images.filter(img => img !== zone.mainImage)}
-                  features={zone.features}
-                  title={zone.title}
-                  layoutVariant={index % 2}
-                />
-              )}
-            </div>
-          ))}
+  <div key={index}>
+    <ZoneSection
+      zoneIndex={index}
+      zoneNumber={String(index + 1).padStart(2, "0")}
+      title={zone.title}
+      description={zone.description}
+      mainImage={zone.mainImage}
+      images={zone.images}
+      projectDetails={zone.projectDetails}
+      features={zone.features} // ✅ add this line
+    />
+
+    {/* For zone 0 (overview), just show its 2 images, no features */}
+    {index === 0 ? (
+      <PresentationShowcase
+        images={zone.images.filter(img => img !== zone.mainImage)}
+        features={[]} // ✅ safe empty
+        title={zone.title}
+      />
+    ) : (
+      <PresentationShowcase
+        images={zone.images.filter(img => img !== zone.mainImage)}
+        features={zone.features} // ✅ pass features here too
+        title={zone.title}
+        layoutVariant={index % 2}
+      />
+    )}
+  </div>
+))}
         </div>
       </section>
 
