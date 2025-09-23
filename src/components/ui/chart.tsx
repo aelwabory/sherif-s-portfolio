@@ -26,11 +26,9 @@ const ChartContext = React.createContext<ChartContextProps | null>(null)
 
 function useChart() {
   const context = React.useContext(ChartContext)
-
   if (!context) {
     throw new Error('useChart must be used within a <ChartContainer />')
   }
-
   return context
 }
 
@@ -71,12 +69,10 @@ function ChartContainer({
 
 const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
   const colorConfig = Object.entries(config).filter(
-    ([, config]) => config.theme || config.color,
+    ([, cfg]) => cfg.theme || cfg.color,
   )
 
-  if (!colorConfig.length) {
-    return null
-  }
+  if (!colorConfig.length) return null
 
   return (
     <style
@@ -104,7 +100,7 @@ ${colorConfig
 
 const ChartTooltip = RechartsPrimitive.Tooltip
 
-// ---- FIXED: relax typing + provide safe defaults for payload without changing UI ----
+// === Tooltip (relaxed typing; same UI) ===
 function ChartTooltipContent(props: any) {
   const {
     active,
@@ -125,9 +121,7 @@ function ChartTooltipContent(props: any) {
   const { config } = useChart()
 
   const tooltipLabel = React.useMemo(() => {
-    if (hideLabel || !payload?.length) {
-      return null
-    }
+    if (hideLabel || !payload?.length) return null
 
     const [item] = payload as any[]
     const key = `${labelKey || item?.dataKey || item?.name || 'value'}`
@@ -145,10 +139,7 @@ function ChartTooltipContent(props: any) {
       )
     }
 
-    if (!value) {
-      return null
-    }
-
+    if (!value) return null
     return <div className={cn('font-medium', labelClassName)}>{value}</div>
   }, [
     label,
@@ -160,9 +151,7 @@ function ChartTooltipContent(props: any) {
     labelKey,
   ])
 
-  if (!active || !payload?.length) {
-    return null
-  }
+  if (!active || !payload?.length) return null
 
   const nestLabel = (payload as any[]).length === 1 && indicator !== 'dot'
 
@@ -246,22 +235,19 @@ function ChartTooltipContent(props: any) {
 
 const ChartLegend = RechartsPrimitive.Legend
 
-function ChartLegendContent({
-  className,
-  hideIcon = false,
-  payload,
-  verticalAlign = 'bottom',
-  nameKey,
-}: React.ComponentProps<'div'> &
-  Pick<RechartsPrimitive.LegendProps, 'payload' | 'verticalAlign'> & {
-    hideIcon?: boolean
-    nameKey?: string
-  }) {
+// === Legend (relaxed typing; same UI) ===
+function ChartLegendContent(props: any) {
+  const {
+    className,
+    hideIcon = false,
+    payload = [],
+    verticalAlign = 'bottom',
+    nameKey,
+  } = props
+
   const { config } = useChart()
 
-  if (!payload?.length) {
-    return null
-  }
+  if (!payload?.length) return null
 
   return (
     <div
@@ -271,13 +257,13 @@ function ChartLegendContent({
         className,
       )}
     >
-      {payload.map((item) => {
-        const key = `${nameKey || (item as any).dataKey || 'value'}`
-        const itemConfig = getPayloadConfigFromPayload(config, item as any, key)
+      {(payload as any[]).map((item) => {
+        const key = `${nameKey || item.dataKey || 'value'}`
+        const itemConfig = getPayloadConfigFromPayload(config, item, key)
 
         return (
           <div
-            key={(item as any).value}
+            key={item.value}
             className={
               '[&>svg]:text-muted-foreground flex items-center gap-1.5 [&>svg]:h-3 [&>svg]:w-3'
             }
@@ -287,9 +273,7 @@ function ChartLegendContent({
             ) : (
               <div
                 className="h-2 w-2 shrink-0 rounded-[2px]"
-                style={{
-                  backgroundColor: (item as any).color,
-                }}
+                style={{ backgroundColor: item.color }}
               />
             )}
             {itemConfig?.label}
