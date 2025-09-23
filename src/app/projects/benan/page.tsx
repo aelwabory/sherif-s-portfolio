@@ -139,7 +139,7 @@ export default function BenanPage() {
 
       <Separator />
 
-      {/* Development Zones */}
+      {/* Development Areas */}
       <section className="pt-8 pb-20">
         <div className="px-6 mb-12">
           <div className="max-w-7xl mx-auto text-center">
@@ -153,26 +153,24 @@ export default function BenanPage() {
         <div className="space-y-0">
           {zones.map((zone, index) => (
             <div key={index}>
-              {zones.map((zone, index) => (
-  <div key={index}>
-    <ZoneSection
-      zoneIndex={index}
-      zoneNumber={String(index + 1).padStart(2, "0")}
-      title={zone.title}
-      description={zone.description}
-      mainImage={zone.mainImage}
-      images={zone.images}
-      projectDetails={zone.projectDetails}
-      features={zone.features}  // ✅ add this line
-    />
-    <PresentationShowcase
-      images={zone.images}
-      features={zone.features}
-      title={zone.title}
-      layoutVariant={index % 2} // optional: alternate layouts
-    />
-  </div>
-))}
+              <ZoneSection
+                zoneIndex={index}
+                zoneNumber={String(index + 1).padStart(2, "0")}
+                title={zone.title}
+                description={zone.description}
+                mainImage={zone.mainImage}
+                images={zone.images}
+                projectDetails={zone.projectDetails}
+                features={zone.features}
+              />
+              <PresentationShowcase
+                images={zone.images}
+                features={zone.features}
+                title={zone.title}
+                layoutVariant={index % 2}
+              />
+            </div>
+          ))}
         </div>
       </section>
 
