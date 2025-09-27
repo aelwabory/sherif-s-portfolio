@@ -1,103 +1,40 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import ProjectStats from "@/components/project-stats"
-import ZoneSection from "@/components/zone-section"
 import PresentationShowcase from "@/components/presentation-showcase"
 import ImageWithFallback from "@/components/figma/ImageWithFallback"
-import { MapPin, Calendar, Award, ArrowLeft } from "lucide-react"
+import { MapPin, Calendar, Award, ArrowLeft, Expand, X } from "lucide-react"
 import { useRouter } from "next/navigation"
 
-const zones = [
-  {
-    title: "Luxury Hotel Complex",
-    description:
-      "Five-star hospitality destination featuring multiple hotels, conference facilities, and world-class amenities designed to serve both residents and visitors.",
-    mainImage:
-      "https://images.unsplash.com/photo-1634041441461-a1789d008830?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1634041441461-a1789d008830?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1590490359854-dfba19688d70?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1543539571-2d88da875d21?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    ],
-    features: ["5-star accommodation", "Conference centers", "Spa & wellness facilities", "Restaurants & bars"],
-    projectDetails: {
-      scope: "Hospitality Complex - Concept: Luxury Resort studies sustainability",
-      location: "Madinaty, New Cairo",
-      date: "2017-2019 - Proposal",
-      about: "Typology: Sustainable Resort - Hospitality",
-      area: "175,000 m2",
-    },
-  },
-  {
-    title: "Residential Districts",
-    description:
-      "Comprehensive residential neighborhoods featuring diverse housing typologies from apartments to villas, integrated with community amenities and green spaces.",
-    mainImage:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    ],
-    features: ["Mixed housing typologies", "Community centers", "Parks & playgrounds", "Retail integration"],
-    projectDetails: {
-      scope: "Residential Development - Master Planning: Mixed-use residential community",
-      location: "Madinaty, New Cairo",
-      date: "2005-2015 - Built",
-      about: "Typology: Mixed Residential Community",
-      area: "2,500,000 m2",
-    },
-  },
-  {
-    title: "Educational Campus",
-    description:
-      "Integrated educational facilities serving all age groups from kindergarten through university level, designed to foster learning and community engagement.",
-    mainImage:
-      "https://images.unsplash.com/photo-1562774053707-520aed937b7b?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1562774053707-520aed937b7b?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    ],
-    features: ["K-12 schools", "University campus", "Research facilities", "Sports complexes"],
-    projectDetails: {
-      scope: "Educational Infrastructure - Campus Design: Comprehensive educational ecosystem",
-      location: "Madinaty, New Cairo",
-      date: "2008-2018 - Built",
-      about: "Typology: Educational Campus Complex",
-      area: "850,000 m2",
-    },
-  },
-  {
-    title: "Commercial Hub",
-    description:
-      "Dynamic commercial center featuring retail, office spaces, and entertainment venues designed to serve as the economic heart of the community.",
-    mainImage:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1555636222-cae831e670b3?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    ],
-    features: ["Shopping centers", "Office towers", "Entertainment venues", "Dining districts"],
-    projectDetails: {
-      scope: "Commercial Development - Mixed-use: Retail, office, and entertainment complex",
-      location: "Madinaty, New Cairo",
-      date: "2010-2020 - Built",
-      about: "Typology: Mixed-use Commercial Complex",
-      area: "650,000 m2",
-    },
-  },
-]
-
-export default function App() {
+export default function MadinatyPage() {
   const router = useRouter()
+
+  const HERO = "/project/madinaty/m-heroimage.jpg"
+  const MAIN = "/project/madinaty/m-masterplan.jpg"
+
+  const GALLERY = [
+    "/project/madinaty/m-image1.jpg",
+    "/project/madinaty/m-image2.jpg",
+    "/project/madinaty/m-image3.jpg",
+    // add more here as needed
+  ]
+
+  // Avoid duplicating MAIN in the showcase
+  const showcaseImages = GALLERY.filter((img) => img !== MAIN)
+
+  // Lightbox for MAIN
+  const [mainExpanded, setMainExpanded] = useState(false)
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!mainExpanded) return
+      if (e.key === "Escape") setMainExpanded(false)
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [mainExpanded])
 
   const handleBack = () => {
     if (typeof window !== "undefined" && window.history.length > 1) {
@@ -120,14 +57,10 @@ export default function App() {
         </button>
       </div>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1693159943203-111bf6a5d14e?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80"
-            alt="Madinaty Aerial View"
-            className="w-full h-full object-cover"
-          />
+          <ImageWithFallback src={HERO} alt="Madinaty Hero" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
 
@@ -137,8 +70,8 @@ export default function App() {
           </Badge>
           <h1 className="text-5xl md:text-7xl mb-6">Madinaty</h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200">
-            A visionary mini city integrating residential, commercial, educational, and hospitality spaces designed for
-            sustainable urban living in the 21st century.
+            A visionary mini city integrating residential, commercial, educational, and hospitality
+            spaces designed for sustainable urban living in the 21st century.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2">
@@ -157,14 +90,15 @@ export default function App() {
         </div>
       </section>
 
-      {/* Project Stats */}
+      {/* Overview */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="mb-4">Project Overview</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Madinaty represents one of the largest integrated urban developments in the Middle East, designed to
-              accommodate hundreds of thousands of residents while maintaining environmental sustainability.
+              Madinaty represents one of the largest integrated urban developments in the Middle East,
+              designed to accommodate hundreds of thousands of residents while maintaining environmental
+              sustainability.
             </p>
           </div>
           <ProjectStats />
@@ -173,52 +107,78 @@ export default function App() {
 
       <Separator />
 
-      {/* Development Zones */}
-      <section className="py-20">
-        <div className="px-6 mb-12">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="mb-4">Development Zones</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Each zone within Madinaty has been carefully planned to create a harmonious blend of functionality,
-              aesthetics, and sustainability, ensuring a complete urban ecosystem.
-            </p>
+      {/* Project Gallery */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex items-center mb-12">
+            <h2 className="text-4xl font-bold uppercase tracking-wider text-gray-800">Project Gallery</h2>
+            <div className="h-px bg-gray-400 flex-1 ml-8" />
           </div>
-        </div>
 
-        <div className="space-y-0">
-          {zones.map((zone, index) => (
-  <div key={index}>
-    <ZoneSection
-      zoneIndex={index}
-      zoneNumber={String(index + 1).padStart(2, "0")}
-      title={zone.title}
-      description={zone.description}
-      mainImage={zone.mainImage}
-      images={zone.images}               // ✅ added
-      projectDetails={zone.projectDetails}
-      features={zone.features}           // ✅ added
-    />
-    <PresentationShowcase
-      images={zone.images}
-      features={zone.features}
-      title={zone.title}
-      layoutVariant={index % 2}          // ✅ optional: alternating layout
-    />
-  </div>
-))}
+          {/* Expandable Main image */}
+          <div
+            className="w-full aspect-[16/10] overflow-hidden rounded-lg mb-8 cursor-pointer group relative"
+            onClick={() => setMainExpanded(true)}
+            role="button"
+            aria-label="Expand main image"
+          >
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
+              <div className="text-white text-center">
+                <Expand size={32} className="mx-auto mb-2" />
+                <p className="text-sm font-medium">Click to expand</p>
+              </div>
+            </div>
+            <ImageWithFallback src={MAIN} alt="Madinaty — Masterplan" className="w-full h-full object-cover" />
+          </div>
+
+          {mainExpanded && (
+            <div
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-0"
+              onClick={() => setMainExpanded(false)}
+            >
+              <div className="relative w-[90vw] max-w-7xl h-[85vh]">
+                <button
+                  onClick={() => setMainExpanded(false)}
+                  className="absolute -top-12 right-0 text-white hover:text-stone-300 transition-colors"
+                >
+                  <X size={32} />
+                </button>
+                <ImageWithFallback
+                  src={MAIN}
+                  alt="Madinaty — Masterplan Expanded"
+                  className="w-full h-full object-contain rounded-lg"
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Optional description */}
+          <div className="mt-8 max-w-4xl">
+            <div className="prose prose-gray max-w-none">
+              <p className="text-gray-600 leading-relaxed">
+                A curated selection of visuals showing the masterplan, public realm, and overall urban
+                vision for Madinaty.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Showcase */}
+      <PresentationShowcase images={showcaseImages} features={[]} title="Madinaty" />
+
       <Separator />
 
-      {/* Design Philosophy */}
+      {/* Philosophy */}
       <section className="py-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Design Philosophy</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Our approach to Madinaty was guided by principles that ensure long-term sustainability and community
-              well-being, creating a harmonious urban environment that serves as a model for future developments.
+              Our approach to Madinaty was guided by principles that ensure long-term sustainability and
+              community well-being, creating a harmonious urban environment that serves as a model for
+              future developments.
             </p>
           </div>
         </div>

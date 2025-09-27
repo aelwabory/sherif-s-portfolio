@@ -1,61 +1,52 @@
 "use client"
 
+import { useState, useEffect } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import ProjectStats from "@/components/project-stats"
-import ZoneSection from "@/components/zone-section"
 import PresentationShowcase from "@/components/presentation-showcase"
 import ImageWithFallback from "@/components/figma/ImageWithFallback"
-import { MapPin, Calendar, Award, ArrowLeft } from "lucide-react"
+import { MapPin, Calendar, ArrowLeft, Expand, X } from "lucide-react"
 import { useRouter } from "next/navigation"
-
-const zones = [
-  {
-    title: "Mixed-Use Development",
-    description:
-      "Integrated commercial and residential towers designed to create a vibrant urban environment with retail, office spaces, and luxury apartments.",
-    mainImage:
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1582407947304-fd86f028f716?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    ],
-    features: ["Commercial towers", "Luxury residences", "Retail spaces", "Office complexes"],
-    projectDetails: {
-      scope: "Mixed-Use Development - Urban Complex",
-      location: "Noor City, New Capital",
-      date: "2019-2022",
-      about: "Typology: Mixed-Use Urban Development",
-      area: "120,000 m2",
-    },
-  },
-  {
-    title: "Central Plaza",
-    description:
-      "Dynamic public space serving as the heart of the development, featuring landscaped areas, water features, and cultural venues for community gatherings.",
-    mainImage:
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1519302959554-a75be0afc82a?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    ],
-    features: ["Public plaza", "Water features", "Cultural venues", "Landscaped gardens"],
-    projectDetails: {
-      scope: "Public Space - Central Plaza",
-      location: "Noor City, New Capital",
-      date: "2020-2021",
-      about: "Typology: Public Plaza",
-      area: "25,000 m2",
-    },
-  },
-]
 
 export default function NoorCityPage() {
   const router = useRouter()
+
+  // Images
+  const HERO = "/projects/noor-city/n-mainimage.jpg"
+  const MAIN = "/projects/noor-city/n-masterplan.jpg"
+
+  const GALLERY = [
+    "/projects/noor-city/n-image1.jpg",
+    "/projects/noor-city/n-image2.jpg",
+    "/projects/noor-city/n-image3.jpg",
+    "/projects/noor-city/n-image4.jpg",
+    "/projects/noor-city/n-image5.jpg",
+    "/projects/noor-city/n-image6.jpg",
+    "/projects/noor-city/n-image7.jpg",
+    "/projects/noor-city/n-image8.jpg",
+    "/projects/noor-city/n-image9.jpg",
+    "/projects/noor-city/n-image10.jpg",
+    "/projects/noor-city/n-image11.jpg",
+    "/projects/noor-city/n-image12.jpg",
+    "/projects/noor-city/n-image13.jpg",
+    "/projects/noor-city/n-image14.jpg",
+    "/projects/noor-city/n-image15.jpg",
+  ]
+
+  const showcaseImages = GALLERY.filter((img) => img !== MAIN)
+
+  // Main image lightbox state
+  const [mainExpanded, setMainExpanded] = useState(false)
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (!mainExpanded) return
+      if (e.key === "Escape") setMainExpanded(false)
+    }
+    window.addEventListener("keydown", onKey)
+    return () => window.removeEventListener("keydown", onKey)
+  }, [mainExpanded])
 
   const handleBack = () => {
     if (typeof window !== "undefined" && window.history.length > 1) {
@@ -78,25 +69,19 @@ export default function NoorCityPage() {
         </button>
       </div>
 
-      {/* Hero Section */}
+      {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <ImageWithFallback
-            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80"
-            alt="Noor City Development"
-            className="w-full h-full object-cover"
-          />
+          <ImageWithFallback src={HERO} alt="Noor City Hero" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-black/60" />
         </div>
 
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
-          <Badge variant="secondary" className="mb-6">
-            Mixed-Use Development
-          </Badge>
+          <Badge variant="secondary" className="mb-6">Mixed-Use Development</Badge>
           <h1 className="text-5xl md:text-7xl mb-6">Noor City</h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200">
             A modern urban development combining commercial, residential, and cultural spaces to create a dynamic city
-            center in Egypt's New Administrative Capital.
+            center in Egypt&apos;s New Administrative Capital.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2">
@@ -105,17 +90,13 @@ export default function NoorCityPage() {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              <span>2019 - 2022</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Award className="w-5 h-5" />
-              <span>Smart City Certified</span>
+              <span>2019 – 2022</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Project Stats */}
+      {/* Project Overview */}
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -131,42 +112,67 @@ export default function NoorCityPage() {
 
       <Separator />
 
-      {/* Development Zones */}
-      <section className="pt-8 pb-20">
-        {" "}
-        {/* reduced top padding from py-20 to pt-8 pb-20 */}
-        <div className="px-6 mb-12">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="mb-4">Development Areas</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Each area within Noor City has been strategically planned to create synergies between different functions,
-              fostering a vibrant urban ecosystem.
-            </p>
+      {/* Main + Showcase */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex items-center mb-12">
+            <h2 className="text-4xl font-bold uppercase tracking-wider text-gray-800">Project Gallery</h2>
+            <div className="h-px bg-gray-400 flex-1 ml-8" />
+          </div>
+
+          {/* Main image (expandable) */}
+          <div
+            className="w-full aspect-[16/10] overflow-hidden rounded-lg mb-8 cursor-pointer group relative"
+            onClick={() => setMainExpanded(true)}
+            role="button"
+            aria-label="Expand main image"
+          >
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/25 transition-colors duration-300 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
+              <div className="text-white text-center">
+                <Expand size={32} className="mx-auto mb-2" />
+                <p className="text-sm font-medium">Click to expand</p>
+              </div>
+            </div>
+            <ImageWithFallback src={MAIN} alt="Noor City — Main" className="w-full h-full object-cover" />
+          </div>
+
+          {/* UNIFORM-SIZE LIGHTBOX FOR MAIN */}
+          {mainExpanded && (
+            <div
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-0"
+              onClick={() => setMainExpanded(false)}
+            >
+              <div className="relative w-[90vw] max-w-7xl h-[85vh]">
+                <button
+                  onClick={() => setMainExpanded(false)}
+                  className="absolute -top-12 right-0 text-white hover:text-stone-300 transition-colors"
+                >
+                  <X size={32} />
+                </button>
+                <ImageWithFallback
+                  src={MAIN}
+                  alt="Noor City — Main Expanded"
+                  className="w-full h-full object-contain rounded-lg"
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Optional description */}
+          <div className="mt-8 max-w-4xl">
+            <div className="prose prose-gray max-w-none">
+              <p className="text-gray-600 leading-relaxed">
+                A curated selection of visuals illustrating massing, public realm, and the interplay between commercial,
+                residential, and cultural anchors in Noor City.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="space-y-0">
-          {zones.map((zone, index) => (
-  <div key={index}>
-    <ZoneSection
-      zoneIndex={index}
-      zoneNumber={String(index + 1).padStart(2, "0")}
-      title={zone.title}
-      description={zone.description}
-      mainImage={zone.mainImage}
-      images={zone.images}
-      projectDetails={zone.projectDetails}
-      features={zone.features} // ✅ already here
-    />
-    <PresentationShowcase
-      images={zone.images}
-      features={zone.features}
-      title={zone.title}
-      layoutVariant={index % 2} // ✅ added for alternating layout
-    />
-  </div>
-))}
-        </div>
       </section>
+
+      {/* Showcase grid */}
+      <PresentationShowcase images={showcaseImages} features={[]} title="Noor City" />
 
       <Separator />
 

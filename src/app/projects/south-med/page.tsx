@@ -3,59 +3,47 @@
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
 import ProjectStats from "@/components/project-stats"
-import ZoneSection from "@/components/zone-section"
 import PresentationShowcase from "@/components/presentation-showcase"
 import ImageWithFallback from "@/components/figma/ImageWithFallback"
-import { MapPin, Calendar, Award, ArrowLeft } from "lucide-react"
+import { MapPin, Calendar, ArrowLeft } from "lucide-react"
 import { useRouter } from "next/navigation"
-
-const zones = [
-  {
-    title: "Coastal Resort Complex",
-    description:
-      "Luxury beachfront resort featuring premium accommodations, spa facilities, and recreational amenities designed to complement the natural Mediterranean coastline.",
-    mainImage:
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1540541338287-41700207dee6?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    ],
-    features: ["Beachfront location", "Luxury accommodations", "Spa & wellness", "Water sports facilities"],
-    projectDetails: {
-      scope: "Resort Development - Coastal Tourism",
-      location: "South Mediterranean Coast",
-      date: "2020-2023",
-      about: "Typology: Luxury Resort Complex",
-      area: "95,000 m2",
-    },
-  },
-  {
-    title: "Marina & Yacht Club",
-    description:
-      "Exclusive marina facility with yacht services, waterfront dining, and recreational boating amenities, creating a premier destination for maritime enthusiasts.",
-    mainImage:
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    images: [
-      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop&crop=center&auto=format&q=80",
-    ],
-    features: ["Private marina", "Yacht services", "Waterfront dining", "Club facilities"],
-    projectDetails: {
-      scope: "Marina Development - Recreational Boating",
-      location: "South Mediterranean Coast",
-      date: "2021-2022",
-      about: "Typology: Marina & Yacht Club",
-      area: "18,000 m2",
-    },
-  },
-]
 
 export default function SouthMedPage() {
   const router = useRouter()
+
+  // IMAGES
+  const HERO = "/projects/south-med/sm-mainimage.jpg"
+  const MAIN = "/projects/south-med/sm-heroimage.jpg"
+
+  const GALLERY = [
+  "/projects/south-med/sm-masterplan.jpg",
+  "/projects/south-med/sm-image1.jpg",
+  "/projects/south-med/sm-image2.jpg",
+  "/projects/south-med/sm-image3.jpg",
+  "/projects/south-med/sm-image4.jpg",
+  "/projects/south-med/sm-image5.jpg",
+  "/projects/south-med/sm-image6.jpg",
+  "/projects/south-med/sm-image7.jpg",
+  "/projects/south-med/sm-image8.jpg",
+  "/projects/south-med/sm-image9.jpg",
+  "/projects/south-med/sm-image10.jpg",
+  "/projects/south-med/sm-image11.jpg",
+  "/projects/south-med/sm-image12.jpg",
+  "/projects/south-med/sm-image13.jpg",
+  "/projects/south-med/sm-image14.jpg",
+  "/projects/south-med/sm-image15.jpg",
+  "/projects/south-med/sm-image16.jpg",
+  "/projects/south-med/sm-image17.jpg",
+  "/projects/south-med/sm-image18.jpg",
+  "/projects/south-med/sm-image19.jpg",
+  "/projects/south-med/sm-image20.jpg",
+  "/projects/south-med/sm-image21.jpg",
+  "/projects/south-med/sm-image22.jpg",
+  "/projects/south-med/sm-image23.jpg",
+]
+
+  // avoid duplicate main in showcase
+  const showcaseImages = GALLERY.filter((img) => img !== MAIN)
 
   const handleBack = () => {
     if (typeof window !== "undefined" && window.history.length > 1) {
@@ -82,8 +70,8 @@ export default function SouthMedPage() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <ImageWithFallback
-            src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1920&h=1080&fit=crop&crop=center&auto=format&q=80"
-            alt="South Med Resort Development"
+            src={HERO}
+            alt="South Med Hero"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/60" />
@@ -95,8 +83,7 @@ export default function SouthMedPage() {
           </Badge>
           <h1 className="text-5xl md:text-7xl mb-6">South Med</h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200">
-            An exclusive Mediterranean coastal resort development combining luxury hospitality with pristine natural
-            beauty, creating an unparalleled destination experience.
+            An exclusive Mediterranean coastal development combining luxury hospitality with pristine natural beauty, creating an unparalleled destination experience.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2">
@@ -105,11 +92,7 @@ export default function SouthMedPage() {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              <span>2020 - 2023</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Award className="w-5 h-5" />
-              <span>Eco-Tourism Certified</span>
+              <span>2020 – 2023</span>
             </div>
           </div>
         </div>
@@ -131,43 +114,38 @@ export default function SouthMedPage() {
 
       <Separator />
 
-      {/* Development Zones */}
-      <section className="pt-8 pb-20">
-        {" "}
-        {/* reduced top padding from py-20 to pt-8 pb-20 */}
-        <div className="px-6 mb-12">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="mb-4">Development Areas</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Each area within South Med has been carefully integrated with the natural coastline, preserving the
-              Mediterranean's pristine beauty while providing world-class amenities.
-            </p>
+      {/* Main + Gallery */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="flex items-center mb-12">
+            <h2 className="text-4xl font-bold uppercase tracking-wider text-gray-800">
+              Project Gallery
+            </h2>
+            <div className="h-px bg-gray-400 flex-1 ml-8" />
+          </div>
+
+          {/* Main Image */}
+          <div className="w-full aspect-[16/10] overflow-hidden rounded-lg mb-8">
+            <ImageWithFallback
+              src={MAIN}
+              alt="South Med Main"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          {/* Optional description */}
+          <div className="mt-8 max-w-4xl">
+            <div className="prose prose-gray max-w-none">
+              <p className="text-gray-600 leading-relaxed">
+                A curated selection of visuals illustrating the spatial character, material palette, and public-realm sequencing across South Med.
+              </p>
+            </div>
           </div>
         </div>
-        <div className="space-y-0">
-          {zones.map((zone, index) => (
-  <div key={index}>
-    <ZoneSection
-      zoneIndex={index}
-      zoneNumber={String(index + 1).padStart(2, "0")}
-      title={zone.title}
-      description={zone.description}
-      mainImage={zone.mainImage}
-      images={zone.images}
-      features={zone.features}
-      projectDetails={zone.projectDetails}
-    />
-    <PresentationShowcase
-      images={zone.images}
-      features={zone.features}
-      title={zone.title}
-      layoutVariant={index % 2} // alternate layouts
-    />
-  </div>
-))}
-
-        </div>
       </section>
+
+      {/* Showcase with all gallery images */}
+      <PresentationShowcase images={showcaseImages} features={[]} title="South Med" />
 
       <Separator />
 
@@ -178,8 +156,7 @@ export default function SouthMedPage() {
             <h2 className="text-3xl font-bold mb-4">Design Philosophy</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our approach to South Med was guided by respect for the natural Mediterranean environment, creating a
-              resort that enhances rather than disrupts the coastal ecosystem while delivering exceptional guest
-              experiences.
+              resort that enhances rather than disrupts the coastal ecosystem while delivering exceptional guest experiences.
             </p>
           </div>
         </div>

@@ -5,10 +5,10 @@ import ImageWithFallback from "@/components/figma/ImageWithFallback"
 import { X, ChevronLeft, ChevronRight, Expand } from "lucide-react"
 
 interface PresentationShowcaseProps {
-  features: string[] // kept for API compatibility
+  features: string[]
   images: string[]
   title: string
-  layoutVariant?: number // kept for API compatibility
+  layoutVariant?: number
 }
 
 export default function PresentationShowcase({
@@ -18,10 +18,8 @@ export default function PresentationShowcase({
 }: PresentationShowcaseProps) {
   const [expandedImageIndex, setExpandedImageIndex] = useState<number | null>(null)
 
-  // Use exactly what we receive
   const safeImages = images
 
-  // Keyboard nav for lightbox
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (expandedImageIndex === null) return
@@ -44,11 +42,9 @@ export default function PresentationShowcase({
     <>
       <div className="py-6 bg-stone-50">
         <div className="max-w-7xl mx-auto px-8">
-          {/* Always two columns */}
           <div className="grid grid-cols-2 gap-6">
             {safeImages.map((img, index) => {
               const isLastAndOdd = index === safeImages.length - 1 && safeImages.length % 2 === 1
-              // span both columns if it's the last tile and the count is odd → fills the row nicely
               const spanClass = isLastAndOdd ? "col-span-2" : "col-span-1"
               return (
                 <div
@@ -56,7 +52,6 @@ export default function PresentationShowcase({
                   className={`${spanClass} relative rounded-2xl overflow-hidden shadow-xl group cursor-pointer aspect-[4/3]`}
                   onClick={() => setExpandedImageIndex(index)}
                 >
-                  {/* Hover overlay */}
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 z-10 flex items-center justify-center opacity-0 group-hover:opacity-100 pointer-events-none">
                     <div className="text-white text-center">
                       <Expand size={32} className="mx-auto mb-2" />
@@ -79,10 +74,11 @@ export default function PresentationShowcase({
       {/* Lightbox */}
       {expandedImageIndex !== null && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-8"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-0"
           onClick={() => setExpandedImageIndex(null)}
         >
-          <div className="relative max-w-7xl max-h-full">
+          {/* 👇 fixed viewport box */}
+          <div className="relative w-[90vw] max-w-7xl h-[85vh]">
             <button
               onClick={() => setExpandedImageIndex(null)}
               className="absolute -top-12 right-0 text-white hover:text-stone-300 transition-colors"
@@ -121,7 +117,7 @@ export default function PresentationShowcase({
             <ImageWithFallback
               src={safeImages[expandedImageIndex] || "/placeholder.svg"}
               alt={`${title} expanded view`}
-              className="max-w-full max-h-full object-contain rounded-lg"
+              className="w-full h-full object-contain rounded-lg"
               onClick={(e) => e.stopPropagation()}
             />
           </div>
