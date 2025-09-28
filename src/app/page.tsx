@@ -26,7 +26,7 @@ export default function HomePage() {
                 size="lg"
                 className="bg-white text-gray-900 hover:bg-gray-100 px-8 py-4 text-lg font-semibold min-w-[180px] shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
               >
-                <Link href="/projects">View Projects</Link>
+                <Link href="/projects">View Developments</Link>
               </Button>
             </div>
           </div>

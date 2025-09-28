@@ -92,7 +92,7 @@ export default function SouthMedPage() {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              <span>2020 – 2023</span>
+              <span> 2023 – 2032 </span>
             </div>
           </div>
         </div>
@@ -102,10 +102,9 @@ export default function SouthMedPage() {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="mb-4">Project Overview</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              South Med represents a harmonious blend of luxury tourism development and environmental conservation,
-              setting new standards for sustainable coastal resort design.
+            <h2 className="mb-6 text-3xl font-bold">Project Overview</h2>
+            <p className="text-muted-foreground max-w-5xl mx-auto text-lg">
+              As Development Director at TMG, I led the land acquisition, planning, and execution of SouthMED, a fully integrated 23 million sq m development strategically located on Egypt's North Coast. Overseeing a 15-person team, I managed the entire development cycle from feasibility studies and budgeting through master planning, approvals, and design coordination to deliver a world-class coastal destination. The project comprises 75,000 residential units, 250,000 sq m of mixed-use GLA, and a diverse range of lifestyle amenities including swimmable lagoons, beachfront activities, retail, hospitality, and community services. My role focused on securing prime land, aligning global design standards with local market needs, ensuring sustainable infrastructure, and positioning SouthMED as an international lifestyle hub accessible to both regional and European markets by 2032.
             </p>
           </div>
           <ProjectStats />
@@ -131,15 +130,6 @@ export default function SouthMedPage() {
               alt="South Med Main"
               className="w-full h-full object-cover"
             />
-          </div>
-
-          {/* Optional description */}
-          <div className="mt-8 max-w-4xl">
-            <div className="prose prose-gray max-w-none">
-              <p className="text-gray-600 leading-relaxed">
-                A curated selection of visuals illustrating the spatial character, material palette, and public-realm sequencing across South Med.
-              </p>
-            </div>
           </div>
         </div>
       </section>

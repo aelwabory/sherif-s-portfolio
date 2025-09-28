@@ -77,7 +77,6 @@ export default function NoorCityPage() {
         </div>
 
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
-          <Badge variant="secondary" className="mb-6">Mixed-Use Development</Badge>
           <h1 className="text-5xl md:text-7xl mb-6">Noor City</h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200">
             A modern urban development combining commercial, residential, and cultural spaces to create a dynamic city
@@ -90,7 +89,7 @@ export default function NoorCityPage() {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              <span>2019 – 2022</span>
+              <span> 2021 – 2036 </span>
             </div>
           </div>
         </div>
@@ -100,10 +99,9 @@ export default function NoorCityPage() {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="mb-4">Project Overview</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Noor City represents a forward-thinking approach to urban development, integrating smart city technologies
-              with sustainable design principles to create a model for future cities.
+            <h2 className="mb-6 text-3xl font-bold">Project Overview</h2>
+            <p className="text-muted-foreground max-w-5xl mx-auto text-lg">
+             As Development Director at TMG, I spearheaded the land acquisition, planning, and execution of Noor Smart City, a 21 million sq m landmark development located near Egypt's New Administrative Capital. Leading a 20-person team, I managed the full development cycle from feasibility studies and budgeting to master planning, design coordination, and government approvals. In collaboration with BCG, the project integrates cutting-edge smart technologies, data-driven infrastructure, and eco-friendly systems to enhance energy efficiency, mobility, and resident well-being. Comprising 140,000 residential units, 150,000 sq m of mixed-use GLA, and diverse lifestyle amenities, Noor sets a new benchmark for sustainable, technology-enabled communities. My role focused on securing prime land, structuring long-term strategies, and embedding innovation at the core of the city to establish Noor as a global model for future-ready urban living through 2036.
             </p>
           </div>
           <ProjectStats />
@@ -159,15 +157,6 @@ export default function NoorCityPage() {
             </div>
           )}
 
-          {/* Optional description */}
-          <div className="mt-8 max-w-4xl">
-            <div className="prose prose-gray max-w-none">
-              <p className="text-gray-600 leading-relaxed">
-                A curated selection of visuals illustrating massing, public realm, and the interplay between commercial,
-                residential, and cultural anchors in Noor City.
-              </p>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -183,7 +172,7 @@ export default function NoorCityPage() {
             <h2 className="text-3xl font-bold mb-4">Design Philosophy</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Our vision for Noor City was to create a smart, sustainable urban environment that serves as a catalyst
-              for economic growth while maintaining human-scale design and community connections.
+              for economic growth while maintaining human scale design and community connections.
             </p>
           </div>
         </div>

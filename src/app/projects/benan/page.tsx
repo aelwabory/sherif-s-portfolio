@@ -70,13 +70,10 @@ export default function BenanPage() {
         </div>
 
         <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
-          <Badge variant="secondary" className="mb-6">
-            Mixed-Use Development
-          </Badge>
           <h1 className="text-5xl md:text-7xl mb-6">Benan</h1>
           <p className="text-xl md:text-2xl mb-8 text-gray-200">
-            A large-scale community blending residential neighborhoods, commercial anchors, and civic amenities with a
-            cohesive public-realm framework.
+            A large scale community blending residential neighborhoods, commercial anchors, and civic amenities with a
+            cohesive public realm framework.
           </p>
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <div className="flex items-center gap-2">
@@ -85,7 +82,7 @@ export default function BenanPage() {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              <span>— Year–Year —</span>
+              <span> 2023–2032 </span>
             </div>
           </div>
         </div>
@@ -95,10 +92,9 @@ export default function BenanPage() {
       <section className="py-20 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="mb-4">Project Overview</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Benan is envisioned as a resilient, human-scaled development with walkable neighborhoods, integrated open
-              spaces, and mixed-use centers connected by a legible street network.
+            <h2 className="mb-6 text-3xl font-bold">Project Overview</h2>
+            <p className="text-muted-foreground max-w-5xl mx-auto text-lg">
+              As Development Director at TMG, I led the planning and execution of Banan Al Riyadh, a landmark 10 million sq m residential community in collaboration with Saudi Arabia's National Housing Company. Overseeing a dedicated team of 15, I managed the full development cycle from land acquisition, feasibility studies and budgeting to master planning, approvals, and design coordination ensuring seamless integration of sustainable living, smart urban design, and Saudi traditions. My responsibilities included structuring development strategies, aligning mixed-use components, and coordinating infrastructure, community services, and lifestyle amenities to deliver a self-sufficient, family-oriented community scheduled through 2032.
             </p>
           </div>
           <ProjectStats />
@@ -152,15 +148,7 @@ export default function BenanPage() {
               </div>
             </div>
           )}
-
-          {/* Optional description */}
-          <div className="mt-8 max-w-4xl">
-            <div className="prose prose-gray max-w-none">
-              <p className="text-gray-600 leading-relaxed">
-                A curated selection of visuals showing the spatial structure, public realm, and neighborhood character across Benan.
-              </p>
-            </div>
-          </div>
+          
         </div>
       </section>
 

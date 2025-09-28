@@ -58,7 +58,7 @@ const projects: ProjectCard[] = [
   title: "Four Seasons Sharm Al Sheikh",
   location: "Sharm El Sheikh, Egypt",
   blurb: "A Red Sea luxury hospitality destination integrating architecture and landscape.",
-  hero: "/project/four-seasons-sharm/fs-heroimage.jpg",
+  hero: "/projects/four-seasons-sharm/fs-heroimage.jpg",
 },
 ]
 
@@ -76,7 +76,7 @@ export default function ProjectsPage() {
           </Link>
         </div>
 
-        <h1 className="text-3xl font-semibold text-center mb-10 text-black">Projects</h1>
+        <h1 className="text-3xl font-semibold text-center mb-10 text-black">Developments</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
           {projects.map((p) => (
