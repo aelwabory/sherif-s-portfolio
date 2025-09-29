@@ -104,7 +104,12 @@ export default function NoorCityPage() {
              As Development Director at TMG, I spearheaded the land acquisition, planning, and execution of Noor Smart City, a 21 million sq m landmark development located near Egypt's New Administrative Capital. Leading a 20-person team, I managed the full development cycle from feasibility studies and budgeting to master planning, design coordination, and government approvals. In collaboration with BCG, the project integrates cutting-edge smart technologies, data-driven infrastructure, and eco-friendly systems to enhance energy efficiency, mobility, and resident well-being. Comprising 140,000 residential units, 150,000 sq m of mixed-use GLA, and diverse lifestyle amenities, Noor sets a new benchmark for sustainable, technology-enabled communities. My role focused on securing prime land, structuring long-term strategies, and embedding innovation at the core of the city to establish Noor as a global model for future-ready urban living through 2036.
             </p>
           </div>
-          <ProjectStats />
+          <ProjectStats stats={[
+            { label: "Total Area", value: "21", unit: "Million sq m" },
+            { label: "Residential Units", value: "140,000", unit: "Units" },
+            { label: "Mixed-Use GLA", value: "150,000", unit: "sq m" },
+            { label: "Investment", value: "$11.8B", unit: "USD" }
+          ]} />
         </div>
       </section>
 

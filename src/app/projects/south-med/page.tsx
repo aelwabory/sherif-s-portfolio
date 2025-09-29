@@ -107,7 +107,12 @@ export default function SouthMedPage() {
               As Development Director at TMG, I led the land acquisition, planning, and execution of SouthMED, a fully integrated 23 million sq m development strategically located on Egypt's North Coast. Overseeing a 15-person team, I managed the entire development cycle from feasibility studies and budgeting through master planning, approvals, and design coordination to deliver a world-class coastal destination. The project comprises 75,000 residential units, 250,000 sq m of mixed-use GLA, and a diverse range of lifestyle amenities including swimmable lagoons, beachfront activities, retail, hospitality, and community services. My role focused on securing prime land, aligning global design standards with local market needs, ensuring sustainable infrastructure, and positioning SouthMED as an international lifestyle hub accessible to both regional and European markets by 2032.
             </p>
           </div>
-          <ProjectStats />
+          <ProjectStats stats={[
+            { label: "Total Area", value: "23", unit: "Million sq m" },
+            { label: "Residential Units", value: "75,000", unit: "Units" },
+            { label: "Mixed-Use GLA", value: "250,000", unit: "sq m" },
+            { label: "Investment", value: "$21.7B", unit: "USD" }
+          ]} />
         </div>
       </section>
 

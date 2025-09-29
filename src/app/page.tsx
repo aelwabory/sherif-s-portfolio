@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export default function HomePage() {
   return (
@@ -8,7 +9,7 @@ export default function HomePage() {
       <section className="relative h-screen w-full overflow-hidden">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: `url('/modern-luxury-residential-development-madinaty-al-.jpg')` }}
+          style={{ backgroundImage: `url('/projects/heroimage.jpg')` }} // ✅ updated path
         />
         {/* Slight dark tint so white text is readable on the image */}
         <div className="absolute inset-0 bg-black/30" />
@@ -63,8 +64,13 @@ export default function HomePage() {
               </div>
 
               <p className="text-lg text-gray-700 leading-relaxed">
-                I am a seasoned development leader with over 31 years of experience delivering city-scale, mixed-use projects across residential, commercial, hospitality, education, and healthcare sectors. My expertise spans the full development cycle from land acquisition and feasibility studies to design management, construction, and operations. 
-                Throughout my career, I have led landmark projects in Egypt and the wider MENA region, managing complex stakeholder ecosystems and ensuring developments that balance architectural excellence with commercial viability. I specialize in transforming large scale visions into thriving communities, driving both financial performance and long term urban value.
+                I am a seasoned development leader with over 31 years of experience delivering city-scale, mixed-use
+                projects across residential, commercial, hospitality, education, and healthcare sectors. My expertise
+                spans the full development cycle from land acquisition and feasibility studies to design management,
+                construction, and operations. Throughout my career, I have led landmark projects in Egypt and the wider
+                MENA region, managing complex stakeholder ecosystems and ensuring developments that balance architectural
+                excellence with commercial viability. I specialize in transforming large scale visions into thriving
+                communities, driving both financial performance and long term urban value.
               </p>
             </div>
           </div>
@@ -73,8 +79,13 @@ export default function HomePage() {
           <div className="relative">
             <div className="bg-white rounded-xl shadow-md p-6 max-w-md mx-auto">
               <div className="flex items-center gap-4">
-                {/* Replace with your photo later */}
-                <div className="w-20 h-20 rounded-full bg-gray-200 shrink-0" />
+                <Image
+                  src="/projects/profile.jpg"
+                  alt="Sherif El Wabory"
+                  width={80}
+                  height={80}
+                  className="w-20 h-20 rounded-full object-cover shrink-0"
+                />
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">Sherif El Wabory</h3>
                   <p className="text-gray-600">Head of Development</p>

@@ -23,13 +23,8 @@ const AREAS: Area[] = [
     description:
       "Madinaty is a large-scale, fully integrated city featuring residential neighborhoods, education, healthcare, retail, hospitality, and an extensive public realm network.",
     // ⬇️ replace with your actual files
-    mainImage: "/projects/madinaty/overview/m-masterplan.jpg",
-    images: [
-      "/projects/madinaty/overview/m-masterplan.jpg",
-      "/projects/madinaty/overview/m-overview-1.jpg",
-      "/projects/madinaty/overview/m-overview-2.jpg",
-      "/projects/madinaty/overview/m-overview-3.jpg",
-    ],
+    mainImage: "/projects/madinaty/m-masterplan.jpg",
+    images: [], // No showcase images for Project Overview
   },
   {
     title: "Four Seasons Hotel",
@@ -53,13 +48,15 @@ const AREAS: Area[] = [
     title: "Privado",
     description:
       "A gated residential precinct characterized by human-scale streets, pocket parks, and a network of neighborhood amenities.",
-    mainImage: "/projects/madinaty/privado/privado-masterplan.jpg",
+    mainImage: "/projects/madinaty/privado/mp-heroimage.jpg",
     images: [
-      "/projects/madinaty/privado/privado-masterplan.jpg",
-      "/projects/madinaty/privado/privado-1.jpg",
-      "/projects/madinaty/privado/privado-2.jpg",
-      "/projects/madinaty/privado/privado-3.jpg",
-      "/projects/madinaty/privado/privado-4.jpg",
+      "/projects/madinaty/privado/mp-masterplan.jpg",
+      "/projects/madinaty/privado/mp-image1.jpg",
+      "/projects/madinaty/privado/mp-image2.jpg",
+      "/projects/madinaty/privado/mp-image3.jpg",
+      "/projects/madinaty/privado/mp-image4.jpg",
+      "/projects/madinaty/privado/mp-image5.jpg",
+      "/projects/madinaty/privado/mp-image6.jpg",
     ],
     features: ["Medium density", "Pocket parks", "Neighborhood center", "Walkable streets"],
   },
@@ -67,14 +64,11 @@ const AREAS: Area[] = [
     title: "Open Air Mall",
     description:
       "A regional commercial destination with open-air promenades, retail streets, dining terraces, and vibrant public spaces.",
-    mainImage: "/projects/madinaty/open-air-mall/oam-masterplan.jpg",
+    mainImage: "/projects/madinaty/open-air-mall/oam-image1.jpg",
     images: [
-      "/projects/madinaty/open-air-mall/oam-masterplan.jpg",
-      "/projects/madinaty/open-air-mall/oam-1.jpg",
-      "/projects/madinaty/open-air-mall/oam-2.jpg",
-      "/projects/madinaty/open-air-mall/oam-3.jpg",
-      "/projects/madinaty/open-air-mall/oam-4.jpg",
-      "/projects/madinaty/open-air-mall/oam-5.jpg",
+      "/projects/madinaty/open-air-mall/oam-image2.jpg",
+      "/projects/madinaty/open-air-mall/oam-image3.jpg",
+      "/projects/madinaty/open-air-mall/oam-image4.jpg",
     ],
     features: ["Retail streets", "F&B terraces", "Public realm", "Event plazas"],
   },
@@ -82,13 +76,12 @@ const AREAS: Area[] = [
     title: "Golf",
     description:
       "Championship golf with a landscape-first approach, integrating neighborhoods with fairways, water features, and view corridors.",
-    mainImage: "/projects/madinaty/golf/golf-masterplan.jpg",
+    mainImage: "/projects/madinaty/golf/mg-image1.jpg",
     images: [
-      "/projects/madinaty/golf/golf-masterplan.jpg",
-      "/projects/madinaty/golf/golf-1.jpg",
-      "/projects/madinaty/golf/golf-2.jpg",
-      "/projects/madinaty/golf/golf-3.jpg",
-      "/projects/madinaty/golf/golf-4.jpg",
+      "/projects/madinaty/golf/mg-image2.jpg",
+      "/projects/madinaty/golf/mg-image3.jpg",
+      "/projects/madinaty/golf/mg-image4.jpg",
+      "/projects/madinaty/golf/mg-image5.jpg",
     ],
     features: ["18-hole course", "Clubhouse", "Practice facilities", "Golf-front neighborhoods"],
   },
@@ -108,7 +101,7 @@ const AREAS: Area[] = [
 ]
 
 // Top hero (replace with your real hero image)
-const HERO = "/projects/madinaty/hero.jpg"
+const HERO = "/projects/madinaty/m-heroimage.jpg"
 
 export default function MadinatyPage() {
   const router = useRouter()
@@ -160,7 +153,7 @@ export default function MadinatyPage() {
             </div>
             <div className="flex items-center gap-2">
               <Calendar className="w-5 h-5" />
-              <span>2005 – 2020</span>
+              <span>2006 – 2040</span>
             </div>
           </div>
         </div>
@@ -175,7 +168,12 @@ export default function MadinatyPage() {
             As Development Director at TMG, I led the land acquisition, planning, and execution of Madinaty, one of the largest master-planned cities in the Middle East, spanning 33 million sq m in East Cairo. Managing a 30-person team, I oversaw the complete development cycle from feasibility studies and budgeting to master planning, design coordination, and government approvals. Designed in collaboration with leading U.S. firms: HHCP, SWA, and SASKI, the city delivers 120,000 residential units, 700,000 sq m of mixed-use GLA, and comprehensive amenities to serve over 700,000 residents. My role focused on structuring long-term strategies, aligning international design standards with local market needs, and ensuring the seamless delivery of infrastructure, services, and lifestyle components that positioned Madinaty as a beacon of modern urban development and a benchmark for future city planning in Egypt.
             </p>
           </div>
-          <ProjectStats />
+          <ProjectStats stats={[
+            { label: "Total Area", value: "33", unit: "Million sq m" },
+            { label: "Residential Units", value: "120,000", unit: "Units" },
+            { label: "Mixed-Use GLA", value: "700,000", unit: "sq m" },
+            { label: "Investment", value: "$10.8B", unit: "USD" }
+          ]} />
         </div>
       </section>
 

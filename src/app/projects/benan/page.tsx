@@ -97,7 +97,12 @@ export default function BenanPage() {
               As Development Director at TMG, I led the planning and execution of Banan Al Riyadh, a landmark 10 million sq m residential community in collaboration with Saudi Arabia's National Housing Company. Overseeing a dedicated team of 15, I managed the full development cycle from land acquisition, feasibility studies and budgeting to master planning, approvals, and design coordination ensuring seamless integration of sustainable living, smart urban design, and Saudi traditions. My responsibilities included structuring development strategies, aligning mixed-use components, and coordinating infrastructure, community services, and lifestyle amenities to deliver a self-sufficient, family-oriented community scheduled through 2032.
             </p>
           </div>
-          <ProjectStats />
+          <ProjectStats stats={[
+            { label: "Total Area", value: "10", unit: "Million sq m" },
+            { label: "Residential Units", value: "120,000", unit: "Units" },
+            { label: "Mixed-Use GLA", value: "100,000", unit: "sq m" },
+            { label: "Investment", value: "$11B", unit: "USD" }
+          ]} />
         </div>
       </section>
 

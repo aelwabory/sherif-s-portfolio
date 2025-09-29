@@ -16,14 +16,14 @@ const projects: ProjectCard[] = [
     title: "Madinaty",
     location: "Cairo, Egypt",
     blurb: "City-scale mixed-use: residential, schools, hospitals, luxury hotel, offices, commercial hubs.",
-    hero: "/projects/madinaty/hero.jpg",
+    hero: "/projects/madinaty/m-heroimage.jpg",
   },
   {
     slug: "al-rehab",
     title: "Al Rehab",
     location: "New Cairo, Egypt",
     blurb: "Integrated community: residential, schools, clinics, offices, retail centers.",
-    hero: "/projects/al-rehab/hero.jpg",
+    hero: "/projects/al-rehab/ar-heroimage.jpg",
   },
   {
     slug: "noor-city",
@@ -47,19 +47,19 @@ const projects: ProjectCard[] = [
     hero: "/projects/benan/b-heroimage.jpg",
   },
   {
+    slug: "four-seasons-sharm",
+    title: "Four Seasons Sharm Al Sheikh",
+    location: "Sharm El Sheikh, Egypt",
+    blurb: "A Red Sea luxury hospitality destination integrating architecture and landscape.",
+    hero: "/projects/four-seasons-sharm/fs-heroimage.jpg",
+  },
+  {
     slug: "hyde-park",
     title: "Hyde Park",
     location: "New Cairo, Egypt",
     blurb: "Sophisticated mixed-use development with luxury residential, commercial, and entertainment facilities.",
     hero: "/projects/hyde-park/hp-heroimage.jpg",
   },
-  {
-  slug: "four-seasons-sharm",
-  title: "Four Seasons Sharm Al Sheikh",
-  location: "Sharm El Sheikh, Egypt",
-  blurb: "A Red Sea luxury hospitality destination integrating architecture and landscape.",
-  hero: "/projects/four-seasons-sharm/fs-heroimage.jpg",
-},
 ]
 
 export default function ProjectsPage() {

@@ -96,7 +96,12 @@ export default function FourSeasonsSharmPage() {
               As Development Director at TMG, I oversaw the expansion of the award-winning Four Seasons Sharm El Sheikh Resort, a 225,000 sq m beachfront destination set within 54 acres of landscaped gardens. Leading a team of 10, I managed the development cycle from feasibility and budgeting to master planning, design coordination, and government approvals. The project adds 92 new keys to the existing 136 rooms and suites, alongside restaurants, retail, wellness and sports facilities, and children's areas, while also delivering 69 new private residences, including villas and chalets. My role focused on aligning the resort's luxury brand standards with long-term investment strategies, ensuring seamless integration of the extension with the existing resort and positioning it as a premier hospitality and residential destination in Egypt through 2030.
             </p>
           </div>
-          <ProjectStats />
+          <ProjectStats stats={[
+            { label: "Total Area", value: "225,000", unit: "sq m" },
+            { label: "Hotel Rooms", value: "289", unit: "Keys" },
+            { label: "Private Residences", value: "25 villas and 44 chalets" },
+            { label: "Investment", value: "$170M", unit: "USD" }
+          ]} />
         </div>
       </section>
 

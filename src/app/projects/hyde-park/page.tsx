@@ -164,7 +164,14 @@ export default function HydeParkPage() {
               and entertainment sophistication, creating a complete urban ecosystem.
             </p>
           </div>
-          <ProjectStats />
+          <ProjectStats stats={[
+            { label: "Total Area", value: "2.5", unit: "Million sq m" },
+            { label: "Residential Units", value: "15,000", unit: "Units" },
+            { label: "Mixed-Use GLA", value: "500,000", unit: "sq m" },
+            { label: "Population", value: "60,000", unit: "Residents" },
+            { label: "Development Period", value: "4", unit: "Years" },
+            { label: "Investment", value: "$3B", unit: "USD" }
+          ]} />
         </div>
       </section>
 
